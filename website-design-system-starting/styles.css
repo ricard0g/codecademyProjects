@@ -1,0 +1,258 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Raleway, sans-serif;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.italic {
+    font-style: italic;
+}
+
+body {
+    background-color: #0f0e17;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    row-gap: 20px;
+    width: 98%;
+    border-radius: 20px;
+    height: 55rem;
+    background: linear-gradient(0deg, #fffffe, #0f0e17);
+    margin: 20px auto;
+}
+
+header h1 {
+    color: #0f0e17;
+    font-size: 5rem;
+    margin: 20px auto;
+    font-weight: 900;
+}
+
+header h3 {
+    color: #2e2f3e;
+    margin: 20px auto;
+    font-size: 1.7rem;
+}
+
+header button {
+    padding: 20px 100px;
+    border-radius: 50px;
+    border: 0;
+    margin-bottom: 50px;
+}
+
+header button:hover {
+    cursor: pointer;
+    background-color: #ff8906;
+    transition: background-color .2s ease-in, color .2s ease-in;
+}
+
+button a {
+    text-decoration: none;
+    color: #0f0e17;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+button a:hover {
+    color: #fffffe;
+    cursor: pointer;
+    transition: color .2s ease-in;
+}
+
+.big-container {
+    padding: 0;
+    width: 98%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 250px auto 0 auto;
+}
+
+.colors {
+    display: inline-block;
+    width: 49%;
+    height: 30rem;
+    border-radius: 20px;
+    background: linear-gradient(270deg, #fffffe 60%, #0f0e17);
+    text-align: center;
+    padding: 10px;
+}
+
+.colors h3, .text-style h3, .fonts h3 {
+    margin: 20px;
+    font-size: 1.4rem;
+    font-weight: 800;
+    text-decoration: underline;
+}
+
+.frame-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 100px;
+}
+
+.color-frame {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 10px;
+    width: 250px;
+    height: 200px;
+    border: 2px solid #0f0e17;
+    border-radius: 20px;
+}
+
+.color-frame p {
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+#night-owl {
+    background-color: #0f0e17;
+}
+
+#night-owl p {
+    color: #fffffe;
+}
+
+#lemon-white {
+    background-color: #fffffe;
+}
+
+#happy-orange {
+    background-color: #ff8906;
+}
+
+#happy-orange {
+    color: #0f0e17;
+}
+
+.text-style {
+    display: inline-block;
+    width: 49%;
+    height: 50rem;
+    border-radius: 20px;
+    background: linear-gradient(90deg, #fffffe 60%, #0f0e17);
+    text-align: center;
+    padding: 10px;
+}
+
+.text-style-examples {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    text-align: left;
+    margin-top: 35px;
+    padding-left: 10px;
+}
+
+#h1-text-style {
+    font-weight: 900;
+    font-size: 5rem;
+    margin-bottom: 15px;
+}
+
+.h1-text-examples, .h2-text-examples, .p-text-examples {
+    margin-left: 60px;
+}
+
+.h1-text-examples li, .h2-text-examples li, .p-text-examples li {
+    list-style: disc;
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin: 10px auto;
+}
+
+#h2-text-style {
+    font-weight: 500;
+    font-size: 1.7rem;
+    margin: 15px 0;
+}
+
+#p-text-style {
+    font-weight: 400;
+    font-size: 1rem;
+    font-family: "Nunito Sans", sans-serif;
+    margin: 15px 0;
+}
+
+.p-text-examples li {
+    font-family: "Nunito Sans", sans-serif;
+}
+
+.fonts {
+    width: 60%;
+    height: 18rem;
+    border-radius: 20px;
+    background-color: #fffffe;
+    text-align: center;
+    padding: 10px;
+    margin: 250px auto 0 auto;
+}
+
+.fonts-examples-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 78%;
+    margin: 30px auto 0 auto;
+}
+
+.fonts-structure {
+    text-align: left;
+}
+
+.fonts-structure h4 {
+    font-size: 1.2rem;
+    margin: 20px 0;
+    text-decoration: underline;
+}
+
+.fonts-structure p {
+    margin: 20px 0;
+    letter-spacing: 1px;
+}
+
+.nunito {
+    font-family: "Nunito Sans", sans-serif;
+}
+
+footer {
+    width: 60%;
+    height: 10rem;
+    border-radius: 20px;
+    background: linear-gradient(180deg, #fffffe, #0f0e17);
+    text-align: center;
+    padding: 10px;
+    margin: 150px auto 50px auto;
+}
+
+footer p {
+    margin-top: 25px;
+    letter-spacing: 1px;
+}
+
+footer a {
+    color: #ff8906;
+    letter-spacing: 1px;
+}
+
+footer a:hover {
+    color: #0f0e17;
+    text-decoration: none;
+} 
