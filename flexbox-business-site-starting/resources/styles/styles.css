@@ -11,14 +11,50 @@ body {
 }
 
 header {
+    width: 100%;
+    min-height: 15.625rem;
     display: flex;
-    flex-direction: column;
-    align-content: center;
-    justify-content: space-around;
+    justify-content: center;
+    align-items: center;
 }
 
 h1 {
     font-size: 3rem;
-    font-family: "Noto Serif JP", serif;
-    font-weight: 700;
+    font-family: "Noto Sans JP", sans-serif;
+    font-weight: 900;
+    flex: 1 1 3rem;
+    margin: 4rem auto;
+    color: #fff;
+}
+
+/* Header Content */
+
+.header-content {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.header-content nav {
+    background-color: #9E4141;
+}
+
+.header-content ul {
+    display: flex;
+    justify-content: space-around;
+}
+
+.header-content li {
+    padding: 1.5rem;
+}
+
+.header-content li a {
+    color: #fff;
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+
+.header-content li a:hover {
+    color: #382121;
 }
