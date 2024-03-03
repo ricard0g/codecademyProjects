@@ -13,6 +13,17 @@ a {
 	text-decoration: none;
 }
 
+h1 {
+    font-size: 3.25rem;
+    font-weight: 700;
+    margin-bottom: 1.8rem;
+}
+
+h4 {
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
 /* Header Styles */
 
 header {
@@ -116,4 +127,126 @@ header a:hover {
         width: 100%;
         font-size: 1em;
     }
+}
+
+/* Banner styles */
+
+.banner {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.banner-text span {
+    color: #d48585;
+    font-weight: 800;
+    text-decoration: underline;
+    letter-spacing: 2px;
+}
+
+.banner-img {
+    max-width: 30%;
+}
+
+.banner-img img {
+    max-width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+@media only screen and (max-width: 840px) {
+    .banner {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: space-around;
+        align-items: center;
+        text-align: center;
+        padding: 3% 0;
+    }
+
+    .banner-img {
+        margin-top: 5%;
+        max-width: 50%;
+    }
+}
+
+@media only screen and (max-width: 610px) {
+    .banner-text h1 {
+        font-size: 2.5rem;
+    }
+    
+    .banner-text h4 {
+        font-size: 1.2rem;
+        max-width: 95%;
+        margin: 0 auto;
+    }
+}
+
+/* Line separator */
+
+.separator {
+    height: 0;
+    width: 40%;
+    margin: 13% auto 5% auto;
+    border: 1px solid #d9d9d9;
+}
+
+/* About us style */
+
+.about-us {
+    text-align: center;
+}
+
+.about-us h3 {
+    font-size: 1.8rem;
+    font-weight: 500;
+    width: fit-content;
+    padding: .8% 3.2%;
+    margin: 0 auto 3% auto;
+    border: 1px solid #d9d9d9;
+    border-radius: 50px;
+}
+
+.about-us p {
+    font-size: 1.125rem;
+    font-weight: 400;
+}
+
+.about-us-container {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-around;
+    margin: 3% auto;
+    width: 80%;
+}
+
+.about-us-img-item {
+    width: 35%;
+    flex-shrink: 1;
+}
+
+.about-us-img-item img {
+    max-width: 100%;
+    height: auto;
+    overflow: hidden;
+    border-radius: 50px;
+}
+
+.about-us-list-item {
+    width: 60%;
+}
+
+.about-us-list-item ul {
+    display: flex;
+    flex-direction: column;
+    align-content: start;
+    justify-content: center;
+}
+
+.about-us-list-item li {
+    text-align: left;
+    margin: 5% 0 0 5%;
 }
