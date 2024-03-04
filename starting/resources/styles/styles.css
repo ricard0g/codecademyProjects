@@ -516,3 +516,91 @@ header a:hover {
 
 /* Bible Study Schedule */
 
+.schedule {
+    margin: 6.5% auto;
+    width: 50%;
+    border-collapse: collapse;
+    background-color: #d48585;
+    border-radius: 50px;
+}
+
+thead {
+    border-bottom: 1px solid #330000;
+    font-weight: 800;
+}
+
+th, td {
+    font-size: 1.5rem;
+    padding: 7% 0;
+    text-align: center;
+}
+
+.day {
+    border-right: 1px solid #330000;
+}
+
+@media only screen and (max-width: 810px) {
+    .schedule {
+        width: 75%;
+    }
+
+    th, td {
+        padding: 8.5% 0;
+    }
+}
+
+@media only screen and (max-width: 530px) {
+.schedule {
+    width: 90%;
+}
+
+    th, td {
+        font-size: 1.125rem;
+        padding: 12% 0;
+    }
+}
+
+/* Location section */
+
+.location {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+    margin: 6.5% 0;
+}
+
+.big-screens {
+    max-width: 50%;
+    border-radius: 50px;
+    box-shadow: 2px 4px 10px #000;
+    flex-shrink: 2;
+}
+
+.small-screens {
+    display: none;
+}
+
+@media only screen and (max-width: 1024px) {
+    .big-screens {
+        max-width: 70%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .big-screens {
+        max-width: 85%;
+    }
+}
+
+@media only screen and (max-width: 530px) {
+    .big-screens {
+        display:none
+    }
+
+    .small-screens {
+        display: inline-block;
+        max-width: 95%;
+        border-radius: 40px;
+    }
+}
