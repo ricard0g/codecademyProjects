@@ -210,7 +210,7 @@ header a:hover {
     margin: 10% auto;
 }
 
-.about-us h3, .instructors-section h3, .bible-study-schedule h3 {
+.about-us h3, .instructors-section h3, .bible-study-schedule h3, .join-us h3 {
     font-size: 1.4rem;
     font-weight: 500;
     width: fit-content;
@@ -522,6 +522,7 @@ header a:hover {
     border-collapse: collapse;
     background-color: #d48585;
     border-radius: 50px;
+    box-shadow: 2px 4px 10px #330000;
 }
 
 thead {
@@ -567,7 +568,7 @@ th, td {
     flex-flow: row nowrap;
     align-items: center;
     justify-content: center;
-    margin: 6.5% 0;
+    margin: 6.5% 0 10% 0;
 }
 
 .big-screens {
@@ -589,7 +590,7 @@ th, td {
 
 @media only screen and (max-width: 768px) {
     .big-screens {
-        max-width: 85%;
+        max-width: 80%;
     }
 }
 
@@ -602,5 +603,186 @@ th, td {
         display: inline-block;
         max-width: 95%;
         border-radius: 40px;
+    }
+}
+
+/* Partner App*/
+
+.partner-app {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+    margin: 8% auto;
+}
+
+.partner-app h3 {
+    display: inline-block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    max-width: 35%;
+    margin: 0 1%;
+}
+
+.partner-app img {
+    max-width: 15%;
+    height: auto;
+    overflow: hidden;
+    margin: 0 1%;
+}
+
+@media only screen and (max-width: 1024px) {
+    .partner-app h3 {
+        font-size: 2rem;
+        max-width: 40%;
+    }
+
+    .partner-app img {
+        max-width: 22%;
+    }
+}
+
+@media only screen and (max-width: 648px) {
+    .partner-app {
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        justify-content: center;
+        margin: 8% auto;
+    }
+    
+    .partner-app h3 {
+        display: inline-block;
+        font-size: 1.8rem;
+        font-weight: 700;
+        max-width: 65%;
+        margin: 2% auto;
+        text-align: center;
+    }
+    
+    .partner-app img {
+        max-width: 40%;
+        height: auto;
+        overflow: hidden;
+        margin: 2% auto;
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    .partner-app h3 {
+        font-size: 1.425rem;
+    }
+}
+
+/* Form Section */
+
+.join-us {
+    text-align: center;
+    margin: 10% auto;
+}
+
+.join-form {
+    margin: 0 auto;
+    max-width: 45%;
+    background-color: #d48585;
+    padding: 2.5% 3%;
+    border-radius: 50px;
+    box-sizing: border-box;
+    box-shadow: 2px 4px 10px #330000;
+}
+
+.join-form label {
+    display: block;
+    margin: 3.5% auto 3.5% .75%;
+    text-align: left;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.join-form input {
+    display: block;
+    margin: 3.5% 0 3.5% 0%;
+    padding: 2.75% 1.25%;
+    width: 97%;
+    border-radius: 8px;
+    border: 0;
+    font-size: 1.125rem;
+    background-color: #330000;
+    color: #fff;
+}
+
+.join-form input:focus {
+    background-color: #33000093;
+}
+
+.join-form input:last-child {
+    margin: 10% auto 3% auto;
+    width: 45%;
+    border-radius: 50px;
+    color: #fff;
+    box-shadow: 2px 4px 6px #330000;
+}
+
+.join-form input:last-child:hover {
+    cursor: pointer;
+    margin-top: 10.5%;
+    margin-bottom: 2.5%;
+    box-shadow: none;
+    background-color: #33000093;
+}
+
+@media only screen and (max-width: 1024px) {
+    .join-form {
+        max-width: 65%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .join-form {
+        max-width: 82.5%;
+    }
+}
+
+@media only screen and (max-width: 520px) {
+    .join-form {
+        padding: 5.5% 4%;
+    }
+
+    .join-form label {
+        font-size: 1.125rem;
+    }
+
+    .join-form input {
+        font-size: 1rem
+    };
+}
+
+/* Footer section */
+
+footer {
+    text-align: center;
+    padding: 2%;
+    background-color: #d48585;
+}
+
+footer p {
+    font-size: 1.125rem;
+    font-weight: 500;
+    margin: 2% auto;
+}
+
+footer a {
+    color: #330000;
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+footer a:hover {
+    color: #33000093;
+}
+
+@media only screen and (max-width: 768px) {
+    footer p {
+        font-size: 0.75rem;
     }
 }
