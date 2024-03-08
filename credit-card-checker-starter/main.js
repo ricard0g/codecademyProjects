@@ -24,11 +24,76 @@ const batch = [valid1, valid2, valid3, valid4, valid5, invalid1, invalid2, inval
 
 
 // Add your functions below:
+function validateCred(arr){
+    //create an exact copy of our passed array because we don't want to mutate our original array
+    let ourArr = arr.slice();
+
+    //for loop to iterate over the array. Only doubling those that are in even positions, and that are not at the end of our array (ths las number being the Check Digit)
+    for(let i = 0; i < ourArr.length; i++){
+        if((i % 2) === 0 && i !== (ourArr.length - 1)){
+            ourArr[i] *= 2;
+            //after the multiplication we check if the result is greater than nine. If so, we substract 9 from the result
+            if(ourArr[i] > 9){
+                ourArr[i] -= 9;
+            }
+        } else if((i % 2) !== 0 && i !== (ourArr.length - 1)){
+            continue;//if the number is in an odd position we want the iterator to directly pass it
+        }
+    };
+    //created a variable that represents the reduced array giving us the sum of all the numbers in the array
+    let ourArrRed = ourArr.reduce((accumulator, currentVal) => {
+        return accumulator + currentVal;
+    })
+
+    return (ourArrRed % 10) === 0;//using our previously created variable, we directly pass as the returned value a boolean. Evaluating 'true' or 'false' depending on the validity of the credit card number
+};
 
 
+const findInvalidCards = (nestArr)=>{
+    //I reversed the returned value of the function 'validateCard()' because I use that returned value later in a .filter() method
+    const reverseValidateCred = (arr)=>{
+        if(validateCred(arr)){
+            return false;
+        } else {
+            return true;
+        }
+    }
 
+    let invalidNumbers = nestArr.filter(reverseValidateCred);//using filter I save a new filtered array into the variable invalidNumbers 
 
+    return invalidNumbers
+}
 
+console.log(findInvalidCards(batch));
 
+//I save, in a more explicit way, the result from invalidNumbers for later use in the idInvalidCardCompanies()
+//I know that I am using 'batch' as a direct argument, which is not very usable for different batches. But I used it directly to not have to create another batch of credit card numbers
+let invalidNumsArr = findInvalidCards(batch);
+console.log(invalidNumsArr);
 
+const idInvalidCardCompanies = (invalidNumsArr) => {
+    const companiesArr = ['Amex (American Express)', 'Visa', 'Mastercard', 'Discover'];//save all the companies names in an array to avoid creating multiple variables that are all related
+    let invalidCompaniesArr = [];//the array where the companie's names are going to be added
+    
+    //for loop to iterate over the invalidNumsArr. Because I saved it in a specific variable instead of calling the function, it's easier to access its values
+    for(let i = 0; i < invalidNumsArr.length; i++){
 
+        //control flow where I first evaluate the first number of each credit card number (invalidNumsArr[i][0]) with the unique first digit for each company
+        //and also evaluating to see if inside the invalidCompaniesArr array is there any signal of the company name that the unique first digit refers to
+        if(invalidNumsArr[i][0] === 3 && invalidCompaniesArr.indexOf(companiesArr[0]) < 0){
+            invalidCompaniesArr.push(companiesArr[0]);
+        } else if(invalidNumsArr[i][0] === 4 && invalidCompaniesArr.indexOf(companiesArr[1]) < 0){
+            invalidCompaniesArr.push(companiesArr[1]);
+        } else if(invalidNumsArr[i][0] === 5 && invalidCompaniesArr.indexOf(companiesArr[2]) < 0){
+            invalidCompaniesArr.push(companiesArr[2]);
+        } else if(invalidNumsArr[i][0] === 6 && invalidCompaniesArr.indexOf(companiesArr[3]) < 0){
+            invalidCompaniesArr.push(companiesArr[3]);
+        } else {
+            console.log(`Company not found`);
+        }
+    }
+    console.log(invalidCompaniesArr)
+    return invalidCompaniesArr;
+}
+
+idInvalidCardCompanies(invalidNumsArr);
