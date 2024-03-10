@@ -64,12 +64,12 @@ const pAequorFactory = (num, arr) => {
       console.log(`\n\n\nSpecimen #1 and specimen #2 have ${percentageFractionDna*100}% in common!\n\n\n`);
     },
     willLikelySurvive(){
+      //I'll save in this array only those bases from the dna that are 'C' or 'G'
       let cAndGsArr = this.dna.filter(base => {
         return base === 'C' || base === 'G'
       });
-      console.log(cAndGsArr);
 
-
+      //by having the array with only Cs and Gs, I can divide the length of this array by the number of bases that all our DNA strands have (15), then multiply that result by 100, giving us a more visually appealing result
       if(((cAndGsArr.length/15)*100) >= 60){
         console.log(`\n\nIn this case it will survive with ${(cAndGsArr.length/15)*100}%.\n\n`)
         return true;
@@ -77,14 +77,62 @@ const pAequorFactory = (num, arr) => {
         console.log(`\n\nIn this case it will not survive with ${(cAndGsArr.length/15)*100}%/\n\n`)
         return false;
       }
+    },
+    complementStrand(){
+      //array that will save all the complementary bases to the DNA. Using .map() as iterator and the Switch statement to return the complementary opposite in each case
+      let complementDna = this.dna.map(base => {
+        switch(base){
+          case 'A':
+            return 'T';
+          
+          case 'T':
+            return 'A';
+          
+          case 'C':
+            return 'G';
+          
+          case 'G':
+            return 'C';
+        }
+      });
+
+      return complementDna;
     }
   }
 }
 
-let pAequor1 = pAequorFactory(1, mockUpStrand());
-let pAequor2 = pAequorFactory(2, mockUpStrand());
-console.log(`\n\n<---------->\n\nBoth pAequors:\n\npAequor1: ${pAequor1.dna}\n\npAequor2: ${pAequor2.dna}\n\n<---------->\n\n`)
+//create a Number of pAequors. Number defined by us
+const createpAequors = number => {
+  let createdpAequors = 0;
+  let pAequorArr = [];
 
-pAequor1.compareDNA(pAequor2.dna);
+  while(createdpAequors < number){
+    let pAequor = pAequorFactory(createdpAequors, mockUpStrand());
+    pAequorArr.push(pAequor);
+    createdpAequors++;
+  }
 
-pAequor1.willLikelySurvive();
+  return pAequorArr
+}
+
+//Tests
+
+const pAequorTest1 = pAequorFactory(1, mockUpStrand());
+const pAequorTest2 = pAequorFactory(2, mockUpStrand());
+console.log(pAequorTest1);
+console.log(pAequorTest2);
+
+//compareDNA() method test
+console.log(pAequorTest1.compareDNA(pAequorTest2.dna));
+
+//willLikelySurvive() method test
+console.log(pAequorTest2.willLikelySurvive());
+
+//createpAequors() function test
+
+let pAequorsArray = createpAequors(30);
+console.log(pAequorsArray);
+
+//complementStrand() method test
+
+console.log(`\n\nHere are the original DNA strand and the Complementary one:\n\n--> Original\n\n${pAequorTest1.dna}\n\n--> Complementary\n\n${pAequorTest1.complementStrand()}\n\n`);
