@@ -62,12 +62,29 @@ const pAequorFactory = (num, arr) => {
       } while(i < this.dna.length && i <= arrDna.length);
 
       console.log(`\n\n\nSpecimen #1 and specimen #2 have ${percentageFractionDna*100}% in common!\n\n\n`);
+    },
+    willLikelySurvive(){
+      let cAndGsArr = this.dna.filter(base => {
+        return base === 'C' || base === 'G'
+      });
+      console.log(cAndGsArr);
+
+
+      if(((cAndGsArr.length/15)*100) >= 60){
+        console.log(`\n\nIn this case it will survive with ${(cAndGsArr.length/15)*100}%.\n\n`)
+        return true;
+      } else {
+        console.log(`\n\nIn this case it will not survive with ${(cAndGsArr.length/15)*100}%/\n\n`)
+        return false;
+      }
     }
   }
 }
 
 let pAequor1 = pAequorFactory(1, mockUpStrand());
 let pAequor2 = pAequorFactory(2, mockUpStrand());
-console.log(`\nBoth pAequors:\n\npAequor1: ${pAequor1.dna}\n\npAequor2: ${pAequor2.dna}\n`)
+console.log(`\n\n<---------->\n\nBoth pAequors:\n\npAequor1: ${pAequor1.dna}\n\npAequor2: ${pAequor2.dna}\n\n<---------->\n\n`)
 
 pAequor1.compareDNA(pAequor2.dna);
+
+pAequor1.willLikelySurvive();
