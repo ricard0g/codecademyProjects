@@ -69,14 +69,7 @@ const pAequorFactory = (num, arr) => {
         return base === 'C' || base === 'G'
       });
 
-      //by having the array with only Cs and Gs, I can divide the length of this array by the number of bases that all our DNA strands have (15), then multiply that result by 100, giving us a more visually appealing result
-      if(((cAndGsArr.length/15)*100) >= 60){
-        console.log(`\n\nIn this case it will survive with ${(cAndGsArr.length/15)*100}%.\n\n`)
-        return true;
-      } else {
-        console.log(`\n\nIn this case it will not survive with ${(cAndGsArr.length/15)*100}%/\n\n`)
-        return false;
-      }
+      return (cAndGsArr.length/15)*100 >= 60;
     },
     complementStrand(){
       //array that will save all the complementary bases to the DNA. Using .map() as iterator and the Switch statement to return the complementary opposite in each case
@@ -99,21 +92,23 @@ const pAequorFactory = (num, arr) => {
       return complementDna;
     }
   }
-}
+};
 
 //create a Number of pAequors. Number defined by us
 const createpAequors = number => {
   let createdpAequors = 0;
-  let pAequorArr = [];
+  let pAequorArrSurvivors = [];
 
   while(createdpAequors < number){
     let pAequor = pAequorFactory(createdpAequors, mockUpStrand());
-    pAequorArr.push(pAequor);
-    createdpAequors++;
+    if(pAequor.willLikelySurvive()){
+      pAequorArrSurvivors.push(pAequor);
+      createdpAequors++;
+    }
   }
 
-  return pAequorArr
-}
+  return pAequorArrSurvivors
+};
 
 //Tests
 
