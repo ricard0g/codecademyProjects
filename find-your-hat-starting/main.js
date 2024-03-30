@@ -137,14 +137,8 @@ class Field {
     }
 }
 
-// Tests Instances
+const myField = Field.generateField(9, 9, 50);
 
-const newField = new Field([
-	[pathCharacter, fieldCharacter, fieldCharacter],
-	[fieldCharacter, hole, hole],
-	[fieldCharacter, hat, hole],
-]);
+const newField = new Field(myField);
 
-// newField.play();
-
-Field.generateField(3, 3, 10);
+newField.play();
