@@ -8,8 +8,10 @@ const pathCharacter = "*";
 class Field {
 	constructor(arr) {
 		this.arr = arr;
-		this.horizontalPosition = 0;
 		this.verticalPosition = 0;
+		this.horizontalPosition= 0;
+		this.startingPointY = 0;
+		this.startingPointX = 0;
 		this.width = arr[0].length;
 		this.height = arr.length;
 		this.quitPlaying = false;
@@ -47,11 +49,17 @@ class Field {
 		}
 	}
 
-    movePosition() {
-        this.arr[this.verticalPosition][this.horizontalPosition] = pathCharacter;
-    }
+	movePosition() {
+		this.arr[this.verticalPosition][this.horizontalPosition] = pathCharacter;
+	}
 
 	play() {
+		this.verticalPosition = this.startingPointY;
+		this.horizontalPosition = this.startingPointX;
+
+		console.log(this.verticalPosition);
+		console.log()
+
 		while (!this.quitPlaying) {
 			this.print();
 			// Input prompt
@@ -62,25 +70,25 @@ class Field {
 				case "r":
 					this.horizontalPosition++;
 					this.positionResult();
-                    this.movePosition();
+					this.movePosition();
 					break;
 
 				case "l":
 					this.horizontalPosition--;
 					this.positionResult();
-                    this.movePosition();
+					this.movePosition();
 					break;
 
 				case "u":
 					this.verticalPosition--;
 					this.positionResult();
-                    this.movePosition();
+					this.movePosition();
 					break;
 
 				case "d":
 					this.verticalPosition++;
 					this.positionResult();
-                    this.movePosition();
+					this.movePosition();
 					break;
 
 				case "q":
@@ -94,50 +102,64 @@ class Field {
 		}
 	}
 
-    static generateField(width, height, percentage) {
-        let field = [];
-        const numberOfHolesPerRow = Math.trunc((percentage / 100) * width);
+	static generateField(width, height, percentage) {
+		let field = [];
+		const numberOfHolesPerRow = Math.trunc((percentage / 100) * width);
 
-        for(let i = 1; i <= height; i++){
-            let emptyRow = [];
+		for (let i = 1; i <= height; i++) {
+			let emptyRow = [];
 
-            for(let j = 1; j <= width; j++){
-                emptyRow.push('');
-            }
+			for (let j = 1; j <= width; j++) {
+				emptyRow.push("");
+			}
 
-            let holesPositioned = 0;
-            while(holesPositioned <= numberOfHolesPerRow){
-                const holePosition = Math.floor(Math.random() * width);
-                emptyRow[holePosition] = hole;
-                holesPositioned++;
-            }
+			let holesPositioned = 0;
+			while (holesPositioned <= numberOfHolesPerRow) {
+				const holePosition = Math.floor(Math.random() * width);
+				emptyRow[holePosition] = hole;
+				holesPositioned++;
+			}
 
-            console.log(`After the holespositioned loop: ${emptyRow}`);
+			for (let n = 0; n < emptyRow.length; n++) {
+				if (emptyRow[n] !== hole) {
+					emptyRow[n] = fieldCharacter;
+				}
+			}
 
-            for(let n = 0; n < emptyRow.length; n++){
-                if(emptyRow[n] !== hole){
-                    emptyRow[n] = fieldCharacter;
-                    console.log('Field character added');
-                }
-            }
+			field.push(emptyRow);
+		}
 
-            console.log(`After for...of loop: ${emptyRow}`);
+		// Place the Hat
+		let hatPosition = [
+			Math.floor(Math.random() * field.length),
+			Math.floor(Math.random() * field[0].length),
+		];
 
-            field.push(emptyRow);
-        }
+		field[hatPosition[0]][hatPosition[1]] = hat;
 
-        // Place the Hat
-        let hatPosition = [Math.floor(Math.random() * field.length), Math.floor(Math.random() * field[0].length)];
+		// Place Starting Point
 
-        field[hatPosition[0]][hatPosition[1]] = hat;
+		this.startingPointY = Math.floor(Math.random() * field.length);
+		this.startingPointX = Math.floor(Math.random() * field[0].length);
 
+		while (field[this.startingPointY][this.startingPointX] === hat) {
+			this.startingPointY = Math.floor(Math.random() * field.length);
+			this.startingPointX = Math.floor(Math.random() * field[0].length);
+		}
 
-        console.log(field);
-        return field
-    }
+		this.verticalPosition = this.startingPointY;
+		this.horizontalPosition = this.startingPointX;
+
+		console.log(this.verticalPosition);
+		console.log(this.horizontalPosition);
+
+		field[this.startingPointY][this.startingPointX] = pathCharacter;
+
+		return field;
+	}
 }
 
-const myField = Field.generateField(9, 9, 50);
+const myField = Field.generateField(9, 9, 20);
 
 const newField = new Field(myField);
 
