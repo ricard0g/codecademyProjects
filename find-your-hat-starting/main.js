@@ -18,6 +18,7 @@ class Field {
 	}
 
 	print() {
+		// Inside formattedArr will be our string representation of our array
 		let formattedArr = "";
 		for (let i = 0; i < this.arr.length; i++) {
 			formattedArr = formattedArr + `${this.arr[i].join("")}` + "\n";
@@ -50,6 +51,7 @@ class Field {
 	}
 
 	checkStartingPosition() {
+		// We have to redeclare the vertical and horizontal position values because when the constructor is called it defaults to "0"
 		for(let i = 0; i < this.arr.length; i++){
 			for (let j = 0; j < this.arr[i].length; j++){
 				if (this.arr[i][j] === pathCharacter) {
@@ -58,9 +60,6 @@ class Field {
 				}
 			}
 		}
-
-		console.log(this.verticalPosition);
-		console.log(this.horizontalPosition);
 	}
 
 	movePosition() {
@@ -73,8 +72,8 @@ class Field {
 
 		while (!this.quitPlaying) {
 			this.print();
-			// Input prompt
 
+			// Input prompt
 			const way = prompt("Which way?");
 
 			switch (way.toLowerCase()) {
@@ -115,14 +114,20 @@ class Field {
 
 	static generateField(width, height, percentage) {
 		let field = [];
+
+		// Based on the percentage passed, to meet the percentage of holes in the field I distribute this percentage to each row of the field
 		const numberOfHolesPerRow = Math.trunc((percentage / 100) * width);
 
 		for (let i = 1; i <= height; i++) {
 			let emptyRow = [];
 
+			// Push empty strings to the row just to meet the number of elements in each row for then they be filled with the corresponding number of holes (based on percentage there will be more or less) and field characters
+
 			for (let j = 1; j <= width; j++) {
 				emptyRow.push("");
 			}
+
+			// holesPositioned will determine if the number of holes per row is met or not. Completely dependent on the numberOfHolesPerRow variable
 
 			let holesPositioned = 0;
 			while (holesPositioned <= numberOfHolesPerRow) {
@@ -131,16 +136,20 @@ class Field {
 				holesPositioned++;
 			}
 
+			// After holes have been positioned we now fill the rest with fieldCharacters
+
 			for (let n = 0; n < emptyRow.length; n++) {
 				if (emptyRow[n] !== hole) {
 					emptyRow[n] = fieldCharacter;
 				}
 			}
 
+			// We push this newly created row into the field array
+
 			field.push(emptyRow);
 		}
 
-		// Place the Hat
+		// Place the Hat. Randomly in any position of the field
 		let hatPosition = [
 			Math.floor(Math.random() * field.length),
 			Math.floor(Math.random() * field[0].length),
@@ -148,7 +157,7 @@ class Field {
 
 		field[hatPosition[0]][hatPosition[1]] = hat;
 
-		// Place Starting Point
+		// Place Starting Point. Randomly in any position of the field, making sure is not the same position as the hat
 
 		this.startingPointY = Math.floor(Math.random() * field.length);
 		this.startingPointX = Math.floor(Math.random() * field[0].length);
@@ -163,6 +172,9 @@ class Field {
 		return field;
 	}
 }
+
+
+// Instances to test
 
 const myField = Field.generateField(15, 15, 30);
 
