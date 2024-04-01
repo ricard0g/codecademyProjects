@@ -9,7 +9,7 @@ class Field {
 	constructor(arr) {
 		this.arr = arr;
 		this.verticalPosition = 0;
-		this.horizontalPosition= 0;
+		this.horizontalPosition = 0;
 		this.startingPointY = 0;
 		this.startingPointX = 0;
 		this.width = arr[0].length;
@@ -49,16 +49,27 @@ class Field {
 		}
 	}
 
+	checkStartingPosition() {
+		for(let i = 0; i < this.arr.length; i++){
+			for (let j = 0; j < this.arr[i].length; j++){
+				if (this.arr[i][j] === pathCharacter) {
+					this.verticalPosition = i;
+					this.horizontalPosition = j;
+				}
+			}
+		}
+
+		console.log(this.verticalPosition);
+		console.log(this.horizontalPosition);
+	}
+
 	movePosition() {
 		this.arr[this.verticalPosition][this.horizontalPosition] = pathCharacter;
 	}
 
 	play() {
-		this.verticalPosition = this.startingPointY;
-		this.horizontalPosition = this.startingPointX;
-
-		console.log(this.verticalPosition);
-		console.log()
+		// Redeclare from where we're going to start
+		this.checkStartingPosition();
 
 		while (!this.quitPlaying) {
 			this.print();
@@ -70,25 +81,25 @@ class Field {
 				case "r":
 					this.horizontalPosition++;
 					this.positionResult();
-					this.movePosition();
+					this.quitPlaying ? null : this.movePosition();
 					break;
 
 				case "l":
 					this.horizontalPosition--;
 					this.positionResult();
-					this.movePosition();
+					this.quitPlaying ? null : this.movePosition();
 					break;
 
 				case "u":
 					this.verticalPosition--;
 					this.positionResult();
-					this.movePosition();
+					this.quitPlaying ? null : this.movePosition();
 					break;
 
 				case "d":
 					this.verticalPosition++;
 					this.positionResult();
-					this.movePosition();
+					this.quitPlaying ? null : this.movePosition();
 					break;
 
 				case "q":
@@ -147,19 +158,13 @@ class Field {
 			this.startingPointX = Math.floor(Math.random() * field[0].length);
 		}
 
-		this.verticalPosition = this.startingPointY;
-		this.horizontalPosition = this.startingPointX;
-
-		console.log(this.verticalPosition);
-		console.log(this.horizontalPosition);
-
 		field[this.startingPointY][this.startingPointX] = pathCharacter;
 
 		return field;
 	}
 }
 
-const myField = Field.generateField(9, 9, 20);
+const myField = Field.generateField(15, 15, 30);
 
 const newField = new Field(myField);
 
