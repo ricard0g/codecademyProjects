@@ -1,0 +1,20 @@
+.searchBarContainer {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: 20%;
+    margin: 20% auto;
+}
+
+.searchBarInput {
+    width: 15%;
+    height: 20%;
+    border-radius: 10px;
+    margin: 2% auto;
+}
+
+.buttonSearch {
+    font-size: 1.125rem;
+    background-color: #331041;
+    box-shadow: -2px 2px 0px #190820;
+}
