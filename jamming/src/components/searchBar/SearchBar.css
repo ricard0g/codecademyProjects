@@ -29,9 +29,14 @@
     padding: 1.5vh 3vw;
     border-radius: 50px;
     border: 0px;
-    transition: 0.25s ease;
+    transition: 0.15s ease;
 }
 
 .buttonSearch:hover {
     background-color: #8228a5;
+}
+
+.buttonSearch:active {
+    box-shadow: none;
+    transform: translateY(2px);
 }
