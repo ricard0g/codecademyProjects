@@ -1,9 +1,5 @@
-
-
 function LeftColumn(props) {
-    return (
-        <div>
-            
-        </div>
-    )
+	return <div></div>;
 }
+
+export { LeftColumn };
