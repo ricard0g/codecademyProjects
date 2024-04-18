@@ -6,11 +6,12 @@ import dotenv from 'dotenv';
 dotenv.config(); // Load env variables
 
 function SearchTable() {
-	
+	const [search, setSearch] = useState('');
+	const [tracks, setTracks] = useState(null);
 
 	return (
 		<>
-			<SearchBar />
+			<SearchBar search={search} onSearchChange={setSearch}/>
 			<TrackColumns />
 		</>
 	);
