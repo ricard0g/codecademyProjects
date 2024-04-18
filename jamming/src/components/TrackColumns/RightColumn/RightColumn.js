@@ -4,7 +4,7 @@ function RightColumn(props) {
     return (
         <div className={styles.rightColumnContainer}>
             <input type="text" className={styles.playlistNameInput}/>
-            <button type="submit">Save To Spotify</button>
+            <button type="submit" className={styles.playlistAddButton}>Save To Spotify</button>
         </div>
     )
 }
