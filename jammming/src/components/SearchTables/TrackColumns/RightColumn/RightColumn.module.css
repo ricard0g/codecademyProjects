@@ -1,0 +1,53 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
+
+.rightColumnContainer {
+    display: flex;
+    flex-flow: column nowrap;
+    align-content: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    width: 25%;
+    padding: 2% 2.5%;
+    background-color: rgba(0, 0, 0, 0.7);
+    margin-left: 4%;
+    margin-top: 7%;
+    border-radius: 20px;
+    box-shadow: 0 0 5px 2px black;
+}
+
+.playlistNameInput {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    padding: 2.5%;
+    font-size: 1.25rem;
+    color: white;
+    font-weight: 400;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid white;
+    margin-bottom: 8%;
+}
+
+.playlistNameInput:focus-visible {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    outline: none;
+}
+
+.savePlaylistButton {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    width: 40%;
+    margin: 0 auto;
+    border-radius: 50px;
+    padding: 2.5%;
+    background-color: blueviolet;
+    border: 1px solid rgb(77, 0, 148);
+    box-shadow: -1px 2px 0 1px rgb(0, 0, 0);
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 50ms linear;
+}
+
+.savePlaylistButton:active {
+    transform: translateY(2px);
+    box-shadow: none;
+}

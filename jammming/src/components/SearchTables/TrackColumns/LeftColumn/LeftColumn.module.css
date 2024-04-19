@@ -1,9 +1,10 @@
 .leftColumnContainer {
     padding: 2% 2.5%;
     width: 35%;
-    height: 100%;
+    min-height: 100vh;
     background-color: rgba(0, 0, 0, 0.7);
     margin-top: 7%;
+    margin-right: 4%;
     border-radius: 20px;
     box-shadow: 0 0 5px 2px black;
 }
