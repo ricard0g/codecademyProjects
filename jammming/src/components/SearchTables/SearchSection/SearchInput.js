@@ -4,7 +4,7 @@ function SearchInput() {
     return (
         <div className={styles.searchInputContainer}>
             <input type="text" placeholder='Search Track' className={styles.inputSearch}/>
-            <button type="submit">Search</button>
+            <button type="submit" className={styles.searchButton}>Search</button>
         </div>
     )
 }

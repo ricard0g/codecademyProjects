@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
+
 .searchInputContainer {
     display: flex;
     flex-flow: column nowrap;
@@ -8,12 +10,39 @@
 }
 
 .inputSearch {
+    font-family: "Plus Jakarta Sans", sans-serif;
     display: inline-block;
-    width: 25%;
-    margin: 2% auto;
+    width: 45%;
+    margin: 2.5% auto;
     padding: 2% 3%;
     border-radius: 10px;
     color: white;
+    font-size: 1.125rem;
     border: 1px solid blueviolet;
     background-color: rgb(64, 19, 106);
+    transition: all 0.125s ease;
+}
+
+.inputSearch:focus {
+    background-color: rgb(93, 29, 152);
+}
+
+.searchButton {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    width: 20%;
+    margin: 0 auto;
+    border-radius: 50px;
+    padding: 1.5% 2%;
+    background-color: blueviolet;
+    border: 1px solid rgb(77, 0, 148);
+    box-shadow: -1px 2px 0 1px rgb(43, 13, 72);
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 50ms linear;
+}
+
+.searchButton:active {
+    transform: translateY(2px);
+    box-shadow: none;
 }
