@@ -36,13 +36,6 @@ function Login() {
             window.location.href = url;
 
             setLogin(true);
-    
-            // const response = await fetch(url);
-    
-            // if(response.ok){
-            //     console.log("Response went Ok!")
-            //     const jsonResponse = await response.json();
-            // }
         } catch(error) {
             console.log(error)
         }
@@ -50,7 +43,7 @@ function Login() {
 
     return (
         <>
-            <button type="submit" onClick={handleSubmit}>
+            <button type="submit" onClick={handleSubmit} className={styles.loginButton}>
                 {login ? "Log Out" : "Log In"}
             </button>
         </>

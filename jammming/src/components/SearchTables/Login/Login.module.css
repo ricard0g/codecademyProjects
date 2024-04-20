@@ -1,0 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
+
+.loginButton {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 2%;
+    padding: 1% 5%;
+    border-radius: 50px;
+    cursor: pointer;
+    background: linear-gradient(90deg, blueviolet, rgb(94, 40, 145));
+    border: 1px solid rgb(187, 143, 228);
+    transition: all 150ms linear;
+}
+
+.loginButton:hover {
+    border: 1px solid black;
+    box-shadow: -2px 2px 0 1px black;
+    transform: translateY(-2px);
+    background: linear-gradient(90deg, rgb(94, 40, 145), blueviolet);
+}
+
+.loginButton:active {
+    box-shadow: none;
+    transform: translateY(2px);
+}
