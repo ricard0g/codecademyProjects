@@ -5,6 +5,7 @@ var clientID = process.env.REACT_APP_CLIENT_ID;
 
 function Login() {
     const [login, setLogin] = useState(false);
+    const [accessToken, setAccessToken] = useState('');
 
     const generateRandomString = (length) => {
         let text = "";
@@ -19,6 +20,7 @@ function Login() {
 
     const handleSubmit = async () => {
         try {
+            console.log(`Currently access token => ${accessToken}`)
             // const cliendId = process.env.CLIENT_ID;
             const redirectUri = "http://localhost:3000/";
     
@@ -35,7 +37,15 @@ function Login() {
 
             window.location.href = url;
 
-            setLogin(true);
+            // After user is redirected and logs in, we check is everything went right and get the access token
+
+            const urlParams = new URLSearchParams(window.location.hash);
+
+            setAccessToken(urlParams.get("access_token"));
+
+            console.log(accessToken);
+
+
         } catch(error) {
             console.log(error)
         }
