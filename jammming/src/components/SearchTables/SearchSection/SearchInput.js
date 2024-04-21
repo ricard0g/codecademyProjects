@@ -1,6 +1,6 @@
 import styles from './SearchInput.module.css';
 
-function SearchInput() {
+function SearchInput({onChangeSearchInput}) {
     return (
         <div className={styles.searchInputContainer}>
             <input type="text" placeholder='Search Track' className={styles.inputSearch}/>

@@ -1,11 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./Login.module.css";
 
 var clientID = process.env.REACT_APP_CLIENT_ID;
 
-function Login() {
+function Login({onChangeAccessToken, accessToken}) {
     const [login, setLogin] = useState(false);
-    const [accessToken, setAccessToken] = useState('');
 
     const generateRandomString = (length) => {
         let text = "";
@@ -35,16 +34,18 @@ function Login() {
             url += "&redirect_uri=" + encodeURIComponent(redirectUri);
             url += "&state=" + encodeURIComponent(state);
 
+            console.log(`Visiting ${url}`);
+
             window.location.href = url;
 
             // After user is redirected and logs in, we check is everything went right and get the access token
 
-            const urlParams = new URLSearchParams(window.location.hash);
+            const hash = window.location.hash.substring(1);
+            const urlParams = new URLSearchParams(hash);
+            const tokenAccess = urlParams.get('access_token');
+            console.log(tokenAccess);
 
-            setAccessToken(urlParams.get("access_token"));
-
-            console.log(accessToken);
-
+            onChangeAccessToken(tokenAccess);
 
         } catch(error) {
             console.log(error)

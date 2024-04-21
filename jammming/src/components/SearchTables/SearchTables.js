@@ -2,8 +2,12 @@ import { SearchInput } from "./SearchSection/SearchInput";
 import { TrackColumns } from "./TrackColumns/TrackColumns";
 import styles from "./SearchTables.module.css";
 import { Login } from "./Login/Login";
+import { useState } from "react";
 
 function SearchTables() {
+    const [accessToken, setAccessToken] = useState(null);
+    const [searchInput, setSearchInput] = useState('');
+
     const exampleResponse = [
         {
             song: "Incomprendido",
@@ -39,9 +43,9 @@ function SearchTables() {
 
     return (
         <section className={styles.searchTablesContainer}>
-            <Login />
-            <SearchInput />
-            <TrackColumns tracks={exampleResponse}/>
+            <Login onChangeAccessToken={setAccessToken} accessToken={accessToken}/>
+            <SearchInput accessToken={accessToken} onChangeSearchInput={setSearchInput}/>
+            <TrackColumns tracks={exampleResponse} searchInput={searchInput}/>
         </section>
     )
 }
