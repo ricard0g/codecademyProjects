@@ -1,17 +1,38 @@
 import styles from "./SearchInput.module.css";
 
-// Spotify API URLs
-const fullEndpoint = 'https://api.spotify.com/v1/search';
+// Spotify API URL and Query Params
+let endpoint = 'https://api.spotify.com/v1/search';
+let typeParam = "track";
+let limitParam = "limit=10"
 
 function SearchInput({ accessToken, onChangeSearchInput, searchInput }) {
-    const q = undefined;
-    
+    console.log(searchInput);
+
 	const handleSearchChange = (e) => {
 		onChangeSearchInput(e.target.value);
+        endpoint += "?";
+        endpoint += `q=${searchInput}&`;
+        endpoint += `type=${typeParam}&`;
+        endpoint += `${limitParam}`;
 	};
-
+    console.log(endpoint);
+    
 	const handleSubmit = async () => {
-		fetch();
+        try {
+            const response = await fetch(endpoint, {
+                method: "GET",
+                headers: {
+                    "Authorization": " Bearer " + ` ${accessToken} `
+                }
+            });
+    
+            if(response.ok){
+                const jsonResponse = await response.json();
+                console.log(`Response went fine!\n\nThis is the entire response:\n\n${jsonResponse}`);
+            }
+        } catch (error) {
+            console.log(error);
+        }
 	};
 
 	return (
@@ -20,9 +41,9 @@ function SearchInput({ accessToken, onChangeSearchInput, searchInput }) {
 				type="text"
 				placeholder="Search Track"
 				className={styles.inputSearch}
-				onSearchInputChange={handleSearchChange}
+				onChange={handleSearchChange}
 			/>
-			<button type="submit" className={styles.searchButton}>
+			<button type="submit" className={styles.searchButton} onSubmit={handleSubmit}>
 				Search
 			</button>
 		</div>
