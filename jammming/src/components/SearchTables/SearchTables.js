@@ -44,7 +44,7 @@ function SearchTables() {
     return (
         <section className={styles.searchTablesContainer}>
             <Login onChangeAccessToken={setAccessToken} accessToken={accessToken}/>
-            <SearchInput accessToken={accessToken} onChangeSearchInput={setSearchInput}/>
+            <SearchInput accessToken={accessToken} onChangeSearchInput={setSearchInput} searchInput={searchInput}/>
             <TrackColumns tracks={exampleResponse} searchInput={searchInput}/>
         </section>
     )
