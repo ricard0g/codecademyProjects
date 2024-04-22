@@ -1,38 +1,46 @@
 import styles from "./SearchInput.module.css";
 
 // Spotify API URL and Query Params
-let endpoint = 'https://api.spotify.com/v1/search';
+let endpoint = "https://api.spotify.com/v1/search";
 let typeParam = "track";
-let limitParam = "limit=10"
+let limitParam = "limit=10";
 
 function SearchInput({ accessToken, onChangeSearchInput, searchInput }) {
-    console.log(searchInput);
 
 	const handleSearchChange = (e) => {
 		onChangeSearchInput(e.target.value);
-        endpoint += "?";
-        endpoint += `q=${searchInput}&`;
-        endpoint += `type=${typeParam}&`;
-        endpoint += `${limitParam}`;
 	};
-    console.log(endpoint);
-    
+	console.log(searchInput);
+
 	const handleSubmit = async () => {
-        try {
-            const response = await fetch(endpoint, {
-                method: "GET",
-                headers: {
-                    "Authorization": " Bearer " + ` ${accessToken} `
-                }
-            });
-    
-            if(response.ok){
-                const jsonResponse = await response.json();
-                console.log(`Response went fine!\n\nThis is the entire response:\n\n${jsonResponse}`);
-            }
-        } catch (error) {
-            console.log(error);
-        }
+		try {
+            // Build the endpoint with the query params and the search input gotten from the user
+			endpoint += "?";
+			endpoint += `q=${searchInput}&`;
+			endpoint += `type=${typeParam}&`;
+			endpoint += `${limitParam}`;
+
+            console.log(endpoint);
+            console.log(accessToken);
+
+			const response = await fetch(endpoint, {
+				method: "GET",
+				headers: {
+					Authorization: " Bearer " + ` ${accessToken} `,
+				},
+			});
+
+            console.log(response);
+
+			if (response.ok) {
+				const jsonResponse = await response.json();
+				console.log(
+					`Response went fine!\n\nThis is the entire response:\n\n${jsonResponse}`
+				);
+			}
+		} catch (error) {
+			console.log(error);
+		}
 	};
 
 	return (
@@ -43,7 +51,11 @@ function SearchInput({ accessToken, onChangeSearchInput, searchInput }) {
 				className={styles.inputSearch}
 				onChange={handleSearchChange}
 			/>
-			<button type="submit" className={styles.searchButton} onSubmit={handleSubmit}>
+			<button
+				type="submit"
+				className={styles.searchButton}
+				onClick={handleSubmit}
+			>
 				Search
 			</button>
 		</div>
