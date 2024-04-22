@@ -6,6 +6,7 @@ var clientID = process.env.REACT_APP_CLIENT_ID;
 function Login({ onChangeAccessToken, accessToken }) {
 	const [login, setLogin] = useState(false);
 
+    // After each time this component is rendered, if window.location.hash returns a truthy value it will parse and change the state of our accesToken variable state that is passed as a prop from the SearchTables component.
 	useEffect(() => {
 		if (window.location.hash) {
 			const hash = window.location.hash.substring(1);
@@ -16,6 +17,7 @@ function Login({ onChangeAccessToken, accessToken }) {
 		}
 	});
 
+    // Inside the Spotify's API, for the Implicit Grant method of authorization, it recommends the create of a "state", so we create this state as a random string of 16 characters of length
 	const generateRandomString = (length) => {
 		let text = "";
 		const possible =
@@ -49,14 +51,6 @@ function Login({ onChangeAccessToken, accessToken }) {
 
 			window.location.href = url;
 
-			// After user is redirected and logs in, we check is everything went right and get the access token
-
-			// const hash = window.location.hash.substring(1);
-			// const urlParams = new URLSearchParams(hash);
-			// const tokenAccess = urlParams.get('access_token');
-			// console.log(tokenAccess);
-
-			// onChangeAccessToken(tokenAccess);
 		} catch (error) {
 			console.log(error);
 		}
