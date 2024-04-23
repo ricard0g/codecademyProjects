@@ -46,3 +46,13 @@
     transform: translateY(2px);
     box-shadow: none;
 }
+
+/* Error message */
+
+.errorMessage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: darkred;
+    color: white;
+}

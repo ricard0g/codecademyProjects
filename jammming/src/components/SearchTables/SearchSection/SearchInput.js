@@ -38,7 +38,7 @@ function SearchInput({ accessToken, onChangeSearchInput, searchInput }) {
 				console.log(
 					`Response went fine!\n\nThis is the entire response:\n\n${jsonResponse}`
 				);
-			}''
+			}
             
             // Create error handling logic, I think it should actually be inside the Catch codeblock
             // if (response.error) {
@@ -46,6 +46,11 @@ function SearchInput({ accessToken, onChangeSearchInput, searchInput }) {
             // }
 		} catch (error) {
 			console.log(error);
+			return (
+				<div className={styles.errorMessage}>
+					<p>First Log In with your Spotify Account</p>
+				</div>
+			)
 		}
 	};
 
