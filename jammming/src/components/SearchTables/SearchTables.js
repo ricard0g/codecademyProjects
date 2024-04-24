@@ -7,6 +7,7 @@ import { useState } from "react";
 function SearchTables() {
     const [accessToken, setAccessToken] = useState(null);
     const [searchInput, setSearchInput] = useState('');
+    const [tracks, setTracks] = useState([]);
 
     const exampleResponse = [
         {
@@ -44,8 +45,8 @@ function SearchTables() {
     return (
         <section className={styles.searchTablesContainer}>
             <Login onChangeAccessToken={setAccessToken} accessToken={accessToken}/>
-            <SearchInput accessToken={accessToken} onChangeSearchInput={setSearchInput} searchInput={searchInput}/>
-            <TrackColumns tracks={exampleResponse} searchInput={searchInput}/>
+            <SearchInput accessToken={accessToken} onChangeSearchInput={setSearchInput} searchInput={searchInput} tracks={tracks} onTracksSearched={setTracks}/>
+            <TrackColumns tracks={tracks} searchInput={searchInput}/>
         </section>
     )
 }
