@@ -11,7 +11,7 @@ export const ContactForm = ({
 }) => {
   return (
     <>
-      <form onSubmit={}></form>
+      <form></form> 
     </>
   );
 };
