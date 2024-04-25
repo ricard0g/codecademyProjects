@@ -1,10 +1,11 @@
 import React from 'react';
 // import useNavigate here.
+import { useNavigate } from 'react-router-dom';
 
 const PetDetailsNotFound = () => {
 
   // get the navigate function from useNavigate
-  const navigate = "REPLACE ME";
+  const navigate = useNavigate();
 
   const goHome = () => {
     // Go home!
@@ -19,7 +20,7 @@ const PetDetailsNotFound = () => {
         alt=""
       />
       <div className="actions-container">
-        <button className="button" onClick={goHome}>
+        <button className="button" onClick={() => navigate("/")}>
           Go Home
         </button>
       </div>
