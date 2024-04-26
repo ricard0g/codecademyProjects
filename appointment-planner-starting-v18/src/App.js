@@ -22,26 +22,28 @@ function App() {
   Implement functions to add data to
   contacts and appointments
   */
-	const addContact = (name, phoneNumber, email) => {
-		setContacts((prev) => {
-			return prev.push({
-				name,
-				phoneNumber,
-				email,
-			});
-		});
+	const addContact = (name, phone, email) => {
+		setContacts([
+			...contacts,
+			{
+				name: name,
+				phone: phone,
+				email: email,
+			},
+		]);
 	};
 
 	const addAppointment = (name, contact, date, time) => {
-		setAppointments((prev) => {
-			return prev.push({
-				name,
-				contact,
-				date,
-				time,
-			});
-		});
-	};
+		setAppointments([
+		  ...appointments,
+		  {
+			name: name,
+			contact: contact,
+			date: date,
+			time: time,
+		  },
+		]);
+	  };
 
 	const router = createBrowserRouter(
 		createRoutesFromElements(
