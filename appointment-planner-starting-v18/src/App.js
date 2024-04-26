@@ -62,6 +62,7 @@ function App() {
 						<AppointmentsPage
 							appointments={appointments}
 							addNewAppointment={addAppointment}
+							contacts={contacts}
 						/> /* Add props to AppointmentsPage */
 					}
 				/>
