@@ -39,3 +39,5 @@ function getOutcome(userChoice, computerChoice) {
     }
     return result;
 }
+
+export { getChoices, getComputerChoice, getOutcome };
